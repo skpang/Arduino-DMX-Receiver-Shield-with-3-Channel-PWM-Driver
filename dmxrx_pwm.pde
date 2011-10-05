@@ -11,7 +11,7 @@ and put the modified HardwareSerial.cpp (its in the download zip) in the same di
 (Arduino Install Directory)/hardware/cores/arduino/
 
 */
-// TO DO : Add frame error and data overrun error handling.
+
 
 /***********************************************************
 * DMX-512 Reception                                        *
@@ -193,7 +193,7 @@ void loop()  {
   }
 } //end loop()
 
-#define PD3  3
+
 
 //Timer2 compare match interrupt vector handler
 ISR(TIMER2_COMPA_vect) {
@@ -204,12 +204,12 @@ ISR(TIMER2_COMPA_vect) {
     zerocounter++;             // increment zerocounter if a zero is received.
     if (zerocounter == 20)     // if 20 0's are received in a row (80uS break)
       { 
-       PORTD |= 1<<PD3;   
+      
       bitClear(TIMSK2, OCIE2A);    //disable this interrupt and enable reception interrupt now that we're in a break.
     
       bitSet(UCSR0B, RXCIE0);
 
-       PORTD &= ~(1<<PD3);
+     
       }
   }
 } //end Timer2 ISR
