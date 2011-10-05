@@ -220,7 +220,7 @@ ISR(USART_RX_vect){
   dmxreceived = UDR0;
   /* The receive buffer (UDR0) must be read during the reception ISR, or the ISR will just 
   *  execute again immediately upon exiting. */
- 
+ //comments
    dmxcurrent++;          //increment address counter
     
   if((UCSR0A & (1<<FE0))  || (UCSR0A & (1<<DOR0))) //Check for frame error and overrun
